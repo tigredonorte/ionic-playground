@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Platform } from '@ionic/angular';
+
+import { routes } from './app-routing.module';
 
 @Component({
   selector: 'app-root',
@@ -11,18 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
-  public appPages = [
-    {
-      title: 'Inbox',
-      url: '/folder/Inbox',
-      icon: 'mail'
-    },
-    {
-      title: 'Navegação',
-      url: '/navegacao',
-      icon: 'paper-plane'
-    }
-  ];
+  public appPages = routes.filter(route => !!route.data).map(route => route.data);
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   constructor(
