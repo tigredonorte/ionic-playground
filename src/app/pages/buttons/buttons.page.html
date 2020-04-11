@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color='primary'>
     <ion-button slot="start">
       <ion-back-button></ion-back-button>
       <ion-menu-button></ion-menu-button>
@@ -9,5 +9,60 @@
 </ion-header>
 
 <ion-content>
-
+  <div>
+    <h3>Button types</h3>
+    <!-- color theme defined on theme folder/variables.scss -->
+    <ion-button>Meu botão</ion-button>
+    <ion-button href='m'>Anchor button</ion-button>
+  </div>
+  <div>
+    <h3>Button themes</h3>
+    <ion-button color='primary'>Primary</ion-button>
+    <ion-button color='secondary' href='m'>Secondary</ion-button>
+    <ion-button color='tertiary'>Tertiary</ion-button>
+    <ion-button color='success'>success</ion-button>
+    <ion-button color='warning'>warning</ion-button>
+    <ion-button color='danger'>danger</ion-button>
+    <ion-button color='light'>light</ion-button>
+    <ion-button color='medium'>medium</ion-button>
+    <ion-button color='dark'>Dark button</ion-button>
+  </div>
+  <div>
+    <h3>Button expand</h3>
+    <ion-button expand='full'>full button</ion-button>
+    <ion-button expand='block'>block button</ion-button>
+  </div>
+  <div>
+    <h3>Button sizes</h3>
+    <ion-button>Default</ion-button>
+    <ion-button size='large'>large</ion-button>
+    <ion-button size='small'>small</ion-button>
+  </div>
+  <div>
+    <h3>Button fill</h3>
+    <ion-button fill="outline">outline</ion-button>
+  </div>
+  <div>
+    <h3>Button shape</h3>
+    <ion-button shape='round'>round</ion-button>
+  </div>
+  <div>
+    <h3>Button icons</h3>
+    <ion-button>
+      left
+      <ion-icon slot="start" name='star'></ion-icon>
+    </ion-button>
+    <ion-button>
+      right
+      <ion-icon slot="end" name='star'></ion-icon>
+    </ion-button>
+    <ion-button>
+      <ion-icon slot="icon-only" name='star'></ion-icon>
+    </ion-button>
+  </div>
+  
+  <div>
+    <h3>Button events</h3>
+    <ion-button (click)="alert('clicked')">click</ion-button>
+  </div>
 </ion-content>
