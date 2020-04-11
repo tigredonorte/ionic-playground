@@ -8,7 +8,6 @@ export const routes: Routes = [
     pathMatch: 'full',
     data: {
       title: 'Home',
-      url: 'home',
       icon: 'mail'
     }
   },
@@ -16,7 +15,6 @@ export const routes: Routes = [
     path: 'navegacao',
     data: {
       title: 'Navegação',
-      url: '/navegacao',
       icon: 'paper-plane'
     },
     loadChildren: () => import('./pages/navegacao/navegacao.module').then( m => m.NavegacaoPageModule)
@@ -29,7 +27,6 @@ export const routes: Routes = [
     path: 'buttons',
     data: {
       title: 'Botões',
-      url: '/buttons',
       icon: 'construct'
     },
     loadChildren: () => import('./pages/buttons/buttons.module').then( m => m.ButtonsPageModule)
@@ -37,6 +34,14 @@ export const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'alert',
+    data: {
+      title: 'Alert',
+      icon: 'alert'
+    },
+    loadChildren: () => import('./pages/alert/alert.module').then( m => m.AlertPageModule)
   }
 ];
 
