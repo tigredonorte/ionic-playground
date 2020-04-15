@@ -42,6 +42,14 @@ export const routes: Routes = [
       icon: 'alert'
     },
     loadChildren: () => import('./pages/alert/alert.module').then( m => m.AlertPageModule)
+  },
+  {
+    path: 'action-sheet',
+    data: {
+      title: 'Action sheet',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/action-sheet/action-sheet.module').then( m => m.ActionSheetPageModule)
   }
 ];
 

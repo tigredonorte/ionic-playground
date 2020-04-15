@@ -15,7 +15,7 @@ export class AlertPage {
     subHeader: 'Its just an ok button',
     message: 'Clica em ok cara',
     buttons: ['Ok']
-  });
+  })
 
   multiple = () => this.callAlert({
     header: 'Multiple Buttons',
