@@ -58,6 +58,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/badge/badge.module').then( m => m.BadgePageModule)
+  },
+  {
+    path: 'card',
+    data: {
+      title: 'Card',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/card/card.module').then( m => m.CardPageModule)
   }
 ];
 
