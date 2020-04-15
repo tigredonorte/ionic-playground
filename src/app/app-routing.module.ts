@@ -50,6 +50,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/action-sheet/action-sheet.module').then( m => m.ActionSheetPageModule)
+  },
+  {
+    path: 'badge',
+    data: {
+      title: 'Badge',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/badge/badge.module').then( m => m.BadgePageModule)
   }
 ];
 

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-button slot="start">
+      <ion-back-button></ion-back-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-button>
+    <ion-title>Badge</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>simple badge</h2>
+  <ion-badge>150</ion-badge>
+  <ion-badge color='secondary'>150</ion-badge>
+
+  <hr>
+  <h2>using io-item</h2>
+  <ion-item>
+    <ion-label>My Label</ion-label>
+    <ion-badge>150</ion-badge>
+  </ion-item>
+
+  <hr>
+  <h2>using color and slot</h2>
+  <ion-item>
+    <ion-label>My Label</ion-label>
+    <ion-badge color='danger' slot='end'>150</ion-badge>
+  </ion-item>
+  <ion-item>
+    <ion-label>My Label</ion-label>
+    <ion-badge color='warning' slot='end'>150</ion-badge>
+  </ion-item>
+  <ion-item>
+    <ion-label>My Label</ion-label>
+    <ion-badge color='warning' slot='start'>150</ion-badge>
+  </ion-item>
+</ion-content>
