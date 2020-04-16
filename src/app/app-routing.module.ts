@@ -82,6 +82,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/chip/chip.module').then( m => m.ChipPageModule)
+  },
+  {
+    path: 'content',
+    data: {
+      title: 'Content',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/content/content.module').then( m => m.ContentPageModule)
   }
 ];
 
