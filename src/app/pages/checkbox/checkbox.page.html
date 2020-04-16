@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-button slot="start">
+      <ion-back-button></ion-back-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-button>
+    <ion-title>Checkbox</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Disabled</ion-label>
+    <ion-checkbox (click)="test('disabled')" disabled='true'></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>checked</ion-label>
+    <ion-checkbox (click)="test('checked')" checked='true'></ion-checkbox>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>primary</ion-label>
+    <ion-checkbox (click)="test('primary')" color='primary'></ion-checkbox>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>secondary</ion-label>
+    <ion-checkbox (click)="test('secondary')" color='secondary'></ion-checkbox>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>dark</ion-label>
+    <ion-checkbox (click)="test('dark')" color='dark'></ion-checkbox>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>light</ion-label>
+    <ion-checkbox (click)="test('light')" color='light'></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>start</ion-label>
+    <ion-checkbox (click)="test('start')" slot='start'></ion-checkbox>
+  </ion-item>
+  
+  <h2>Playing</h2>
+  <ion-list>
+    <ion-item *ngFor="let month of months">
+      <ion-label>{{month.name}}</ion-label>
+      <ion-checkbox (ngModelChange)="test(month)" slot='start' [(ngModel)]="month.checked"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ion-content>
