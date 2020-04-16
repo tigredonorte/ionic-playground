@@ -98,6 +98,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/datetime/datetime.module').then( m => m.DatetimePageModule)
+  },
+  {
+    path: 'fab',
+    data: {
+      title: 'Float Action Button',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/fab/fab.module').then( m => m.FabPageModule)
   }
 ];
 
