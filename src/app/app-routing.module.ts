@@ -90,6 +90,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/content/content.module').then( m => m.ContentPageModule)
+  },
+  {
+    path: 'datetime',
+    data: {
+      title: 'Date Time',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/datetime/datetime.module').then( m => m.DatetimePageModule)
   }
 ];
 
