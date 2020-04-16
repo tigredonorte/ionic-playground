@@ -74,6 +74,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/checkbox/checkbox.module').then( m => m.CheckboxPageModule)
+  },
+  {
+    path: 'chip',
+    data: {
+      title: 'Chip',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/chip/chip.module').then( m => m.ChipPageModule)
   }
 ];
 
