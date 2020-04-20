@@ -106,6 +106,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/fab/fab.module').then( m => m.FabPageModule)
+  },
+  {
+    path: 'grid',
+    data: {
+      title: 'Grid',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/grid/grid.module').then( m => m.GridPageModule)
   }
 ];
 
