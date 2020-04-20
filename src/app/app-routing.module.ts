@@ -122,6 +122,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/infinite-scroll/infinite-scroll.module').then( m => m.InfiniteScrollPageModule)
+  },
+  {
+    path: 'input',
+    data: {
+      title: 'Input',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/input/input.module').then( m => m.InputPageModule)
   }
 ];
 
