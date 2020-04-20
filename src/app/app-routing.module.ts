@@ -114,6 +114,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/grid/grid.module').then( m => m.GridPageModule)
+  },
+  {
+    path: 'infinite-scroll',
+    data: {
+      title: 'Infinite Scroll',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/infinite-scroll/infinite-scroll.module').then( m => m.InfiniteScrollPageModule)
   }
 ];
 

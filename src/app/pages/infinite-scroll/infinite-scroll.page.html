@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>
+    <ion-title>Infinite Scroll</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let dt of data | slice: 0:limit">
+    <ion-card-header>{{dt.title}}</ion-card-header>
+    <ion-img src='https://media-manager.noticiasaominuto.com/1920/1557486293/naom_5cd55a3f25614.jpg?crop_params=eyJwb3J0cmFpdCI6eyJjcm9wV2lkdGgiOjAsImNyb3BIZWlnaHQiOjAsImNyb3BYIjowLCJjcm9wWSI6MH0sImxhbmRzY2FwZSI6eyJjcm9wV2lkdGgiOjk2MCwiY3JvcEhlaWdodCI6NTQwLCJjcm9wWCI6MCwiY3JvcFkiOjEzNX19'></ion-img>
+    <ion-card-content>
+      <ion-card-title>{{dt.title}}</ion-card-title>
+      <p>{{dt.content}}</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-infinite-scroll (ionInfinite)="populateInfiniteScroll($event)">
+    <ion-infinite-scroll-content>
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
