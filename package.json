@@ -10,6 +10,7 @@
     "test": "ionic test",
     "lint": "ionic lint",
     "e2e": "ionic e2e",
+    "sync": "npx cap sync",
     "android": "npx cap copy && npx cap open android",
     "ios": "npx cap copy && npx cap open ios"
   },
