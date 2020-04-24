@@ -130,6 +130,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/input/input.module').then( m => m.InputPageModule)
+  },
+  {
+    path: 'list',
+    data: {
+      title: 'List',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/list/list.module').then( m => m.ListPageModule)
   }
 ];
 
