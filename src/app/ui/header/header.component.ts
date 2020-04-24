@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HeaderComponent {
 
+  @Input() backButton = false;
   constructor(private route: ActivatedRoute) {}
 
   public title = this.route.snapshot.data.title;

@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
+import { UiModule } from 'src/app/ui/ui.module';
 
 import { NavegacaoPageRoutingModule } from './navegacao-routing.module';
-
 import { NavegacaoPage } from './navegacao.page';
 
 @NgModule({
@@ -13,7 +12,8 @@ import { NavegacaoPage } from './navegacao.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    NavegacaoPageRoutingModule
+    NavegacaoPageRoutingModule,
+    UiModule
   ],
   declarations: [NavegacaoPage]
 })

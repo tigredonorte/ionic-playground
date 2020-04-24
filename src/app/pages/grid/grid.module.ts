@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
+import { UiModule } from 'src/app/ui/ui.module';
 
 import { GridPageRoutingModule } from './grid-routing.module';
-
 import { GridPage } from './grid.page';
 
 @NgModule({
@@ -13,7 +12,8 @@ import { GridPage } from './grid.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    GridPageRoutingModule
+    GridPageRoutingModule,
+    UiModule
   ],
   declarations: [GridPage]
 })

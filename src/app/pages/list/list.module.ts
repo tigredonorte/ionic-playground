@@ -12,8 +12,8 @@ import { ListPage } from './list.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    UiModule,
-    ListPageRoutingModule
+    ListPageRoutingModule,
+    UiModule
   ],
   declarations: [ListPage]
 })

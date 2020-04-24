@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
+import { UiModule } from 'src/app/ui/ui.module';
 
 import { ChipPageRoutingModule } from './chip-routing.module';
-
 import { ChipPage } from './chip.page';
 
 @NgModule({
@@ -13,7 +12,8 @@ import { ChipPage } from './chip.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ChipPageRoutingModule
+    ChipPageRoutingModule,
+    UiModule
   ],
   declarations: [ChipPage]
 })

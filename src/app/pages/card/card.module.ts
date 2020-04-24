@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { UiModule } from 'src/app/ui/ui.module';
 
 import { CardPageRoutingModule } from './card-routing.module';
 import { CardPage } from './card.page';
@@ -14,6 +15,7 @@ import { CardPage } from './card.page';
     FormsModule,
     IonicModule,
     CardPageRoutingModule,
+    UiModule
     // YoutubeVideoPlayer
   ],
   declarations: [CardPage]

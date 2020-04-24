@@ -1,6 +1,6 @@
 <ion-toolbar color='primary'>
   <ion-button slot="start">
-    <ion-back-button></ion-back-button>
+    <ion-back-button *ngIf="backButton"></ion-back-button>
     <ion-menu-button></ion-menu-button>
   </ion-button>
   <ion-title>{{title}}</ion-title>
