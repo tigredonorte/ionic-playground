@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { timer } from 'rxjs';
 
-const itemList = [
+export const itemList = [
   {label: 'Abacate'},
   {label: 'Morango'},
   {label: 'Pêssego'},

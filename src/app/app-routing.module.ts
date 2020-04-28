@@ -154,6 +154,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/refresh/refresh.module').then( m => m.RefreshPageModule)
+  },
+  {
+    path: 'reorder',
+    data: {
+      title: 'Reorder',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/reorder/reorder.module').then( m => m.ReorderPageModule)
   }
 ];
 
