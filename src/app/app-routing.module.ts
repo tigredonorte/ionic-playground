@@ -146,6 +146,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/progress-bar/progress-bar.module').then( m => m.ProgressBarPageModule)
+  },
+  {
+    path: 'refresh',
+    data: {
+      title: 'Refresh',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/refresh/refresh.module').then( m => m.RefreshPageModule)
   }
 ];
 
