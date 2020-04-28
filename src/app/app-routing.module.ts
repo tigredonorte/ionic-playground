@@ -138,6 +138,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/list/list.module').then( m => m.ListPageModule)
+  },
+  {
+    path: 'progress-bar',
+    data: {
+      title: 'Progress Bar',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/progress-bar/progress-bar.module').then( m => m.ProgressBarPageModule)
   }
 ];
 

@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-progress-bar [value]="value - .08" color="warning"></ion-progress-bar>
+  <app-header [backButton]="true"></app-header>
+</ion-header>
+
+<ion-content>
+  <ion-progress-bar [value]="value" color="danger"></ion-progress-bar>
+  <br>
+  <ion-progress-bar [value]="value - .05" color="primary"></ion-progress-bar>
+  <br>
+  <ion-progress-bar color="dark" type='indeterminate'></ion-progress-bar>
+  <br>
+  <ion-progress-bar color="tertiary" type='indeterminate' reversed></ion-progress-bar>
+</ion-content>
