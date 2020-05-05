@@ -162,6 +162,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/reorder/reorder.module').then( m => m.ReorderPageModule)
+  },
+  {
+    path: 'select',
+    data: {
+      title: 'Select',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/select/select.module').then( m => m.SelectPageModule)
   }
 ];
 

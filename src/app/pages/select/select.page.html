@@ -1,0 +1,58 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>Select Simples</ion-list-header>
+    <ion-item color='white'>
+      <ion-label>Fruta</ion-label>
+      <ion-select value='Abacaxi' placeholder="Selecione sua fruta" okText="Selecionar" cancelText="Cancelar">
+        <ion-select-option *ngFor="let item of items" [value]="item.label">
+          {{item.label}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>Select Múltiplo</ion-list-header>
+    <ion-item color='white'>
+      <ion-label>Fruta</ion-label>
+      <ion-select [value]="['Abacaxi', 'Morango']" multiple='true'>
+        <ion-select-option *ngFor="let item of items" [value]="item.label">
+          {{item.label}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  
+  <ion-list>
+    <ion-list-header>Select Customizado</ion-list-header>
+    <ion-item>
+      <ion-label>Fruta</ion-label>
+      <ion-select [interfaceOptions]="customAlertOptions" interface="alert">
+        <ion-select-option *ngFor="let item of items" [value]="item.label">
+          {{item.label}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fruta</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+        <ion-select-option *ngFor="let item of items" [value]="item.label">
+          {{item.label}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fruta</ion-label>
+      <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet">
+        <ion-select-option *ngFor="let item of items" [value]="item.label">
+          {{item.label}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>
