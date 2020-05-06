@@ -202,6 +202,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/slides/slides.module').then( m => m.SlidesPageModule)
+  },
+  {
+    path: 'toast',
+    data: {
+      title: 'Toast',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/toast/toast.module').then( m => m.ToastPageModule)
   }
 ];
 
