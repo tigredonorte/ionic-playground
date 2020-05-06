@@ -210,6 +210,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/toast/toast.module').then( m => m.ToastPageModule)
+  },
+  {
+    path: 'modal',
+    data: {
+      title: 'Modal',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/modal/modal.module').then( m => m.ModalPageModule)
   }
 ];
 
