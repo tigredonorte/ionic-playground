@@ -1,0 +1,34 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+
+<ion-content>
+
+  <ion-toolbar>
+    <ion-segment color="danger" value="color" disabled >
+      <ion-segment-button href="#fruits" value="fruit">
+        <ion-label>Fruits</ion-label>
+      </ion-segment-button>
+      <ion-segment-button href="#color" value="color">
+        <ion-label>color</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <ion-segment (ionChange)="segmentChanged($event)" color="dark" scrollable>
+    <ion-segment-button href="#fruits" value="fruit">
+      <ion-label>Fruits</ion-label>
+    </ion-segment-button>
+    <ion-segment-button *ngFor="let item of items" [value]="item.label">
+      <ion-label>{{item.label}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-list *ngIf="isFruit">
+    <ion-list-header>Fruit list</ion-list-header>
+    <ion-item  color='white' *ngFor="let item of items">
+      <ion-label>{{item.label}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

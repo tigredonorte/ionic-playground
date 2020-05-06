@@ -186,6 +186,14 @@ export const routes: Routes = [
       icon: 'search'
     },
     loadChildren: () => import('./pages/search-bar/search-bar.module').then( m => m.SearchBarPageModule)
+  },
+  {
+    path: 'segment',
+    data: {
+      title: 'Segment',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/segment/segment.module').then( m => m.SegmentPageModule)
   }
 ];
 
