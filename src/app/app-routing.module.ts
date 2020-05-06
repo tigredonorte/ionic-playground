@@ -178,6 +178,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/toggle/toggle.module').then( m => m.TogglePageModule)
+  },
+  {
+    path: 'search-bar',
+    data: {
+      title: 'Sarch bar',
+      icon: 'search'
+    },
+    loadChildren: () => import('./pages/search-bar/search-bar.module').then( m => m.SearchBarPageModule)
   }
 ];
 
