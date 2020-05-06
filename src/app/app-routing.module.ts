@@ -194,6 +194,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/segment/segment.module').then( m => m.SegmentPageModule)
+  },
+  {
+    path: 'slides',
+    data: {
+      title: 'Slides',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/slides/slides.module').then( m => m.SlidesPageModule)
   }
 ];
 
