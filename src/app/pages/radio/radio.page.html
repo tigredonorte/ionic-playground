@@ -1,0 +1,22 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+
+<ion-content>
+  <ion-radio-group [(ngModel)]="radio" (ngModelChange)="changed($event)">
+    <ion-list>
+      <ion-list-header>
+        <ion-label>{{radio}}</ion-label>
+      </ion-list-header>
+
+      <ion-item *ngFor="let item of items">
+        <ion-label>{{item.label}}</ion-label>
+        <ion-radio slot="start" color='danger' [value]="item.label"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Desabilitado</ion-label>
+        <ion-radio disabled slot="end" color='warning' value="desabilitado"></ion-radio>
+      </ion-item>
+    </ion-list>
+  </ion-radio-group>
+</ion-content>

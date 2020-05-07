@@ -226,6 +226,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/popover/popover.module').then( m => m.PopoverPageModule)
+  },
+  {
+    path: 'radio',
+    data: {
+      title: 'Radio',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/radio/radio.module').then( m => m.RadioPageModule)
   }
 ];
 
