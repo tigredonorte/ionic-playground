@@ -17,6 +17,7 @@ import { SampleModalComponent } from './sample-modal/sample-modal.component';
     UiModule
   ],
   declarations: [ModalPage, SampleModalComponent],
+  exports: [SampleModalComponent],
   entryComponents: [SampleModalComponent]
 })
 export class ModalPageModule {}

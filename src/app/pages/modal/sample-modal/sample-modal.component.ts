@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-sample-modal',
@@ -9,10 +9,19 @@ import { ModalController } from '@ionic/angular';
 export class SampleModalComponent {
 
   @Input() public title = '';
+  @Input() public isPopover = false;
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController, private popoverCtrl: PopoverController) { }
 
-  public dismiss = () => this.modalCtrl.dismiss({
-    returnedData: 'sample'
-  })
+  public dismiss = () => {
+    const data = {
+      returnedData: 'sample'
+    };
+    if (this.isPopover) {
+      this.popoverCtrl.dismiss(data);
+    }
+    else {
+      this.modalCtrl.dismiss(data);
+    }
+  }
 }

@@ -218,6 +218,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/modal/modal.module').then( m => m.ModalPageModule)
+  },
+  {
+    path: 'popover',
+    data: {
+      title: 'Popover',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/popover/popover.module').then( m => m.PopoverPageModule)
   }
 ];
 
