@@ -234,6 +234,14 @@ export const routes: Routes = [
       icon: 'construct'
     },
     loadChildren: () => import('./pages/radio/radio.module').then( m => m.RadioPageModule)
+  },
+  {
+    path: 'animacao',
+    data: {
+      title: 'Animação',
+      icon: 'construct'
+    },
+    loadChildren: () => import('./pages/animacao/animacao.module').then( m => m.AnimacaoPageModule)
   }
 ];
 

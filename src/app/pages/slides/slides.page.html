@@ -10,6 +10,15 @@
     </ion-segment-button>
   </ion-segment>
 
+  <h2>with effects</h2>
+  <ion-slides pager="true" [options]="slideOpts" *ngIf="!changing" class='animate__animated animate__flipInY animate__faster animate__delay-2s'>
+    <ion-slide *ngFor="let item of items">
+      <ion-img [src]="item.img" style="width: 100%; height: 200px;"></ion-img>
+    </ion-slide>
+  </ion-slides>
+
+  
+  <h2>without effects</h2>
   <ion-slides pager="true" [options]="slideOpts" *ngIf="!changing">
     <ion-slide *ngFor="let item of items">
       <ion-img [src]="item.img" style="width: 100%; height: 200px;"></ion-img>
