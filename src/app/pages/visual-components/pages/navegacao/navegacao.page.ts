@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -6,15 +6,12 @@ import { NavController } from '@ionic/angular';
   templateUrl: './navegacao.page.html',
   styleUrls: ['./navegacao.page.scss'],
 })
-export class NavegacaoPage implements OnInit {
+export class NavegacaoPage {
 
   constructor(private router: NavController) { }
 
-  ngOnInit() {
-  }
-
   navigate() {
-    this.router.navigateForward('navegacao2');
+    this.router.navigateForward('visual-components/navegacao2');
   }
 
 }

@@ -14,7 +14,7 @@ export class Navegacao2Page implements OnInit {
   }
 
   navigate() {
-    this.router.navigateBack('navegacao');
+    this.router.navigateBack('visual-components/navegacao');
   }
 
 }
