@@ -5,14 +5,14 @@ export const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full',
-    data: {
-      title: 'Home',
-      icon: 'mail'
-    }
+    pathMatch: 'full'
   },
   {
     path: 'home',
+    data: {
+      title: 'Home',
+      icon: 'home'
+    },
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
