@@ -15,7 +15,7 @@ export class HomePage {
     title: route.data.title,
     icon: route.data.icon,
     url: route.path
-  }));
+  })).sort((a, b) => a.title === b.title ? 0 : a.title > b.title ? 1 : -1);
 
   constructor(private router: NavController) { }
 

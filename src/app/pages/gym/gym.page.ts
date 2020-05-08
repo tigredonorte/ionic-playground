@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { treinos } from './treinos';
 
 @Component({
   selector: 'app-gym',
   templateUrl: './gym.page.html',
   styleUrls: ['./gym.page.scss'],
 })
-export class GymPage implements OnInit {
+export class GymPage {
+  public treinos = treinos;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {
+  public selectTreino(cod) {
+    this.router.navigate([`gym/week/${cod}`], {});
   }
-
 }
