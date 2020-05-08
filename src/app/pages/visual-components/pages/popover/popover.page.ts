@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
-import { SampleModalComponent } from '../../../modal/sample-modal/sample-modal.component';
+import { SampleModalComponent } from '../modal/sample-modal/sample-modal.component';
 
 @Component({
   selector: 'app-popover',

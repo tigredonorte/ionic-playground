@@ -19,9 +19,17 @@ export const routes: Routes = [
     path: 'visual-components',
     data: {
       title: 'Componentes Visuais',
-      icon: 'construct'
+      icon: 'football-outline'
     },
     loadChildren: () => import('./pages/visual-components/visual-components.module').then( m => m.VisualComponentsPageModule)
+  },
+  {
+    path: 'gym',
+    data: {
+      title: 'Academia',
+      icon: 'muscle'
+    },
+    loadChildren: () => import('./pages/gym/gym.module').then( m => m.GymPageModule)
   },
 ];
 

@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { UiModule } from 'src/app/ui/ui.module';
 
-import { ModalPageModule } from '../../../modal/modal.module';
-import { SampleModalComponent } from '../../../modal/sample-modal/sample-modal.component';
+import { ModalPageModule } from '../modal/modal.module';
+import { SampleModalComponent } from '../modal/sample-modal/sample-modal.component';
 import { PopoverPageRoutingModule } from './popover-routing.module';
 import { PopoverPage } from './popover.page';
 
