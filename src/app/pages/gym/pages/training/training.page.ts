@@ -15,16 +15,12 @@ import { WatchVideoModalComponent } from './watch-video-modal/watch-video-modal.
 })
 export class TrainingPage implements OnInit {
 
-  @ViewChild('slides', { static: false }) slides: IonSlides;
-
-  public watching = false;
   public currentExercice = 0;
   public mode = 'card'; // list, card
   public exercices;
   public weekCode;
   public trainCode;
   public subtitle = '';
-  public slideOpts = {};
   constructor(
     private router: Router,
     private youtubeService: WatchYoutubeService,
@@ -59,23 +55,15 @@ export class TrainingPage implements OnInit {
     this.subtitle = keys(groups).join(' + ');
   }
 
-  public async slideChanged() {
-    const index = await this.slides.getActiveIndex();
-    this.currentExercice = index;
-    this.slideOpts = {
-      initialSlide: index
-    }
-    this.openVideo(index, this.exercices.exercices[index].video);
+  public async slideChanged(data) {
+    this.currentExercice = data.index;
+    const videoId = data.exercice.video.split('=').pop();
+    this.youtubeService.openVideo(`youtube_${data.index}`, videoId);
   }
 
-  public openVideo(i, video) {
-    const videoId = video.split('=').pop();
-    this.youtubeService.openVideo(`youtube_${i}`, videoId);
-  }
-
-  async presentModal(video) {
-    this.watching = true;
-    const videoId = video.split('=').pop();
+  async presentModal(dt) {
+    console.log('@@##', dt);
+    const videoId = dt.exercice.video.split('=').pop();
     const modal = await this.modalController.create({
       component: WatchVideoModalComponent,
       componentProps: {videoId}
