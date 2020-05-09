@@ -3,5 +3,10 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-list auto-hide="false" >
+    <ion-item *ngFor="let p of routes; let i = index" routerDirection="root" (click)="navigate(p, i)" lines="none" detail="false" [class.selected]="selectedIndex == i">
+      <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+      <ion-label>{{ p.title }}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

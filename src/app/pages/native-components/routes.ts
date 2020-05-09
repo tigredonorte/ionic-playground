@@ -4,7 +4,7 @@ export const routes: Routes = [
   {
     path: 'home',
     data: {
-      title: 'Visual Components',
+      title: 'Native Components',
       icon: 'construct',
     },
     loadChildren: () => import('./home/home.module').then((m) => m.HomePageModule),
