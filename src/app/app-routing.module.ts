@@ -19,7 +19,7 @@ export const routes: Routes = [
     path: 'visual-components',
     data: {
       title: 'Componentes Visuais',
-      icon: 'football-outline'
+      icon: 'home'
     },
     loadChildren: () => import('./pages/visual-components/visual-components.module').then( m => m.VisualComponentsPageModule)
   },
@@ -27,9 +27,17 @@ export const routes: Routes = [
     path: 'gym',
     data: {
       title: 'Academia',
-      icon: 'muscle'
+      icon: 'home'
     },
     loadChildren: () => import('./pages/gym/gym.module').then( m => m.GymPageModule)
+  },
+  {
+    path: 'native-components',
+    data: {
+      title: 'Componentes Nativos',
+      icon: 'home'
+    },
+    loadChildren: () => import('./pages/native-components/native-components.module').then( m => m.NativeComponentsPageModule)
   },
 ];
 

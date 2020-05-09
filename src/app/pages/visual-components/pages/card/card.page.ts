@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
 
 @Component({
   selector: 'app-card',

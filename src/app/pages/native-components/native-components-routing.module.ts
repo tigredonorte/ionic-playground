@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { routes as r } from './routes';
 
-export const routes: Routes = [
+const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
@@ -16,4 +16,4 @@ export const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class VisualComponentsPageRoutingModule {}
+export class NativeComponentsPageRoutingModule {}
