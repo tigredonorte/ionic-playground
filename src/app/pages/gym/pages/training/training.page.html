@@ -1,25 +1,50 @@
 <ion-header>
-  <app-header [backButton]="true"></app-header>
+  <app-header [title]="exercices.title" [backButton]="true"></app-header>
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <div id="youtube-player"></div>
+  <ion-toolbar>
+    <ion-segment [value]="mode">
+      <ion-segment-button value="card" (click)="mode='card'"><ion-icon name="videocam-outline"></ion-icon></ion-segment-button>
+      <ion-segment-button value="list" (click)="mode='list'"><ion-icon name="list-circle-outline"></ion-icon></ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <ion-slides #slides pager="true" [options]="slideOpts" (ionSlidesDidLoad)="slideChanged()" (ionSlideDidChange)="slideChanged()" *ngIf="mode==='card'">
+    <ion-slide *ngFor="let ex of exercices.exercices; let i=index;" >
+      <ion-card class='width100 animate__animated animate__fadeIn'>
+        <ion-card-header>{{subtitle}}</ion-card-header>
+        <div [id]="'youtube_' + i">youtube link</div>
+        <ion-card-content>
+          <ion-card-title>{{ex.title}} ({{ex.sets}})</ion-card-title>
+          <ion-card-subtitle>
+            <span>Descanso: {{ex.interval}}</span>
+            <ion-chip *ngIf="ex.technique" color="danger">
+              <ion-label>{{ex.technique}}</ion-label>
+            </ion-chip>
+          </ion-card-subtitle>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-card *ngIf="mode==='list'">
+    <ion-card-header>{{subtitle}}</ion-card-header>
     <ion-card-content>
-      <ion-card-title>{{exercices.title}}</ion-card-title>
-      <ion-card-subtitle>--- {{subtitle}} ---</ion-card-subtitle>
       <ion-list>
-        <ion-item *ngFor="let ex of exercices.exercices" (click)="openVideo(ex.video)">
+        <ion-item *ngFor="let ex of exercices.exercices; let i = index;" (click)="presentModal(ex.video)">
           <ion-label>
-            <h2>{{ex.title}} ({{ex.sets}})</h2>
-            <p style="text-align: left; width: 40%; float: left; margin-top: 5px;">{{ex.interval}}</p>
-            <p style="text-align: right; width: 60%; float: right;" *ngIf="ex.technique">
-               <b>{{ex.technique}}</b>
-            </p>
+            <ion-card-subtitle><b>{{ex.title}} ({{ex.sets}})</b></ion-card-subtitle>
+            <ion-card-subtitle>
+              <span>Descanso: {{ex.interval}}</span>
+              <ion-chip *ngIf="ex.technique" color="danger">
+                <ion-label>{{ex.technique}}</ion-label>
+              </ion-chip>
+            </ion-card-subtitle>
           </ion-label>
         </ion-item>
       </ion-list>
-    </ion-card-content>
+    </ion-card-content> 
   </ion-card>
 
 </ion-content>

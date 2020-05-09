@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Capacitor, Plugins } from '@capacitor/core';
-import { YoutubePlayerWeb } from 'capacitor-youtube-player';
+import { IonSlides, ModalController } from '@ionic/angular';
 import { keys } from 'ramda';
 
 import { treinos } from '../../treinos';
 import { videos } from '../../videos';
+import { WatchYoutubeService } from './service/watch-youtube.service';
+import { WatchVideoModalComponent } from './watch-video-modal/watch-video-modal.component';
 
 @Component({
   selector: 'app-training',
@@ -14,11 +15,21 @@ import { videos } from '../../videos';
 })
 export class TrainingPage implements OnInit {
 
+  @ViewChild('slides', { static: false }) slides: IonSlides;
+
+  public watching = false;
+  public currentExercice = 0;
+  public mode = 'card'; // list, card
   public exercices;
   public weekCode;
   public trainCode;
   public subtitle = '';
-  constructor(private router: Router) {
+  public slideOpts = {};
+  constructor(
+    private router: Router,
+    private youtubeService: WatchYoutubeService,
+    private modalController: ModalController
+  ) {
     const temp = this.router.url.split('/');
     this.trainCode = temp.pop();
     this.weekCode = temp.pop();
@@ -45,40 +56,34 @@ export class TrainingPage implements OnInit {
         groups[element.group.title] = '';
       }
     });
-    console.log(this.exercices);
     this.subtitle = keys(groups).join(' + ');
   }
 
-  public openVideo(video) {
-    const id = video.split('=').pop();
-    Capacitor.platform === 'web' ? this.initializeYoutubePlayerPluginWeb(id) : this.initializeYoutubePlayerPluginNative(id);
+  public async slideChanged() {
+    const index = await this.slides.getActiveIndex();
+    this.currentExercice = index;
+    this.slideOpts = {
+      initialSlide: index
+    }
+    this.openVideo(index, this.exercices.exercices[index].video);
   }
 
-  async initializeYoutubePlayerPluginWeb(videoId) {
-    console.log('HomePage::initializeYoutubePlayerPluginWeb() | method called');
-    const options = {playerId: 'youtube-player', playerSize: {width: 640, height: 360}, videoId};
-    const result = await YoutubePlayerWeb.initialize(options);
-    console.log('playerReady', result);
+  public openVideo(i, video) {
+    const videoId = video.split('=').pop();
+    this.youtubeService.openVideo(`youtube_${i}`, videoId);
+  }
 
-    (result as any).player.addEventListener('onPlaybackQualityChange', (event) => {
-      console.log('playback quality is', event);
+  async presentModal(video) {
+    this.watching = true;
+    const videoId = video.split('=').pop();
+    const modal = await this.modalController.create({
+      component: WatchVideoModalComponent,
+      componentProps: {videoId}
     });
+    await modal.present();
 
-    (result as any).player.addEventListener('onStateChange', (event) => {
-      console.log('state is', event);
-    });
+    const { data } = await modal.onWillDismiss();
+    console.log(data);
   }
-
-  async destroyYoutubePlayerPluginWeb() {
-    const result = await YoutubePlayerWeb.destroy('youtube-player');
-    console.log('destroyYoutubePlayer', result);
-  }
-
-  async initializeYoutubePlayerPluginNative(videoId) {
-    const { YoutubePlayer } = Plugins;
-    const options = {width: 640, height: 360, videoId};
-    const playerReady = await YoutubePlayer.initialize(options);
-  }
-
 
 }

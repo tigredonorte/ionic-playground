@@ -10,6 +10,8 @@ import { filter, map } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnDestroy {
 
+  @Input() public title = this.route.snapshot.data.title;
+
   @Input() backButton = false;
   constructor(private route: ActivatedRoute, private router: Router) {
     this.router.events.pipe(
@@ -19,8 +21,6 @@ export class HeaderComponent implements OnDestroy {
       untilDestroyed(this)
     ).subscribe(url => this.backButton = true);
   }
-
-  public title = this.route.snapshot.data.title;
 
   public ngOnDestroy() {}
 }

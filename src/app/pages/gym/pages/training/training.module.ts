@@ -1,12 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+// import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
 import { IonicModule } from '@ionic/angular';
 import { UiModule } from 'src/app/ui/ui.module';
-
+import { WatchYoutubeService } from './service/watch-youtube.service';
 import { TrainingPageRoutingModule } from './training-routing.module';
 import { TrainingPage } from './training.page';
+import { WatchVideoModalComponent } from './watch-video-modal/watch-video-modal.component';
+
 
 @NgModule({
   imports: [
@@ -16,7 +19,8 @@ import { TrainingPage } from './training.page';
     TrainingPageRoutingModule,
     UiModule
   ],
-  providers: [YoutubeVideoPlayer],
-  declarations: [TrainingPage]
+  providers: [WatchYoutubeService, ScreenOrientation],
+  declarations: [TrainingPage, WatchVideoModalComponent],
+  entryComponents: [WatchVideoModalComponent]
 })
 export class TrainingPageModule {}
