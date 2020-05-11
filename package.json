@@ -11,6 +11,7 @@
     "lint": "ionic lint",
     "e2e": "ionic e2e",
     "sync": "npx cap sync",
+    "android2": "ionic capacitor sync android",
     "android": "npx cap copy && npx cap open android",
     "ios": "npx cap copy && npx cap open ios"
   },
