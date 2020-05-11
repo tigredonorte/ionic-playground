@@ -8,5 +8,13 @@ export const routes: Routes = [
       icon: 'construct',
     },
     loadChildren: () => import('./home/home.module').then((m) => m.HomePageModule),
-  }
+  },
+  {
+    path: 'photo',
+    data: {
+      title: 'Photo',
+      icon: 'construct',
+    },
+    loadChildren: () => import('./pages/photo/photo.module').then( m => m.PhotoPageModule)
+  },
 ];

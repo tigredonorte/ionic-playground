@@ -4,24 +4,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'gym',
     pathMatch: 'full'
-  },
-  {
-    path: 'home',
-    data: {
-      title: 'Home',
-      icon: 'home'
-    },
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'visual-components',
-    data: {
-      title: 'Componentes Visuais',
-      icon: 'home'
-    },
-    loadChildren: () => import('./pages/visual-components/visual-components.module').then( m => m.VisualComponentsPageModule)
   },
   {
     path: 'gym',
@@ -30,6 +14,14 @@ export const routes: Routes = [
       icon: 'home'
     },
     loadChildren: () => import('./pages/gym/gym.module').then( m => m.GymPageModule)
+  },
+  {
+    path: 'visual-components',
+    data: {
+      title: 'Componentes Visuais',
+      icon: 'home'
+    },
+    loadChildren: () => import('./pages/visual-components/visual-components.module').then( m => m.VisualComponentsPageModule)
   },
   {
     path: 'native-components',
