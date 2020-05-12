@@ -182,6 +182,9 @@
     },
     "@ionic/angular-toolkit:page": {
       "styleext": "scss"
+    },
+    "@ngrx/schematics:container": {
+      "styleext": "scss"
     }
   }
 }

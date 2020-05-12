@@ -1,0 +1,13 @@
+{
+  "extends": "@endemolshinegroup/cz-jira-smart-commit",
+  "@endemolshinegroup/cz-jira-smart-commit": {
+    "pullRequestsOnly": true,
+    "scopes": {
+      "ci": "For changes on ci",
+      "repository-config": "For changes on repository-config",
+      "gym": "For changes on gym-app",
+      "native-components": "For changes on native-components",
+      "visual-components": "For changes on visual-components",
+    }
+  }
+}
