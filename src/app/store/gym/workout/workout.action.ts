@@ -1,4 +1,4 @@
-import { WorkoutItem } from './workout.state';
+import { Exercice } from './workout.state';
 
 export enum actions {
   listWorkouts = '[Workout] list workouts',
@@ -12,7 +12,7 @@ export class ListWorkouts {
 
 export class ListWorkoutsEnd {
   public readonly type = actions.listedWorkouts;
-  constructor(public workouts: WorkoutItem[]) {}
+  constructor(public exercices: Exercice[]) {}
 }
 
 export type WorkoutActions =

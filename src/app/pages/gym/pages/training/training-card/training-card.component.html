@@ -1,5 +1,5 @@
 <ion-slides #slides pager="true" [options]="slideOpts" (ionSlidesDidLoad)="slideChanged()" (ionSlideDidChange)="slideChanged()">
-  <ion-slide *ngFor="let ex of exercices.exercices; let i=index;" >
+  <ion-slide *ngFor="let ex of exercices; let i=index;" >
     <ion-card class='width100 animate__animated animate__fadeIn'>
       <ion-card-header>{{subtitle}}</ion-card-header>
       <div [id]="'youtube_' + i">youtube link</div>

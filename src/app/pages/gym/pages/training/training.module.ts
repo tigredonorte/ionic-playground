@@ -11,6 +11,7 @@ import { TrainingListComponent } from './training-list/training-list.component';
 import { TrainingPageRoutingModule } from './training-routing.module';
 import { TrainingPage } from './training.page';
 import { WatchVideoModalComponent } from './watch-video-modal/watch-video-modal.component';
+import { UtilsModule } from '@app/store/utils/utils.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { WatchVideoModalComponent } from './watch-video-modal/watch-video-modal.
     FormsModule,
     IonicModule,
     TrainingPageRoutingModule,
-    UiModule
+    UiModule,
+    UtilsModule
   ],
   providers: [WatchYoutubeService, ScreenOrientation],
   declarations: [TrainingPage, WatchVideoModalComponent, TrainingListComponent, TrainingCardComponent],

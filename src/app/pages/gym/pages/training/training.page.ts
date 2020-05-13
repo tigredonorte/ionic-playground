@@ -1,7 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonSlides, ModalController } from '@ionic/angular';
+import { ListWorkouts } from '@app/store/gym/workout/workout.action';
+import { selectExerciceList } from '@app/store/gym/workout/workout.selector';
+import { Exercice } from '@app/store/gym/workout/workout.state';
+import { ModalController } from '@ionic/angular';
+import { select, Store } from '@ngrx/store';
 import { keys } from 'ramda';
+import { Observable } from 'rxjs';
 
 import { treinos } from '../../treinos';
 import { videos } from '../../videos';
@@ -17,6 +22,7 @@ export class TrainingPage implements OnInit {
 
   public currentExercice = 0;
   public mode = 'card'; // list, card
+  public exercices$: Observable<Exercice[]>;
   public exercices;
   public weekCode;
   public trainCode;
@@ -24,35 +30,31 @@ export class TrainingPage implements OnInit {
   constructor(
     private router: Router,
     private youtubeService: WatchYoutubeService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private store: Store<any>
   ) {
     const temp = this.router.url.split('/');
     this.trainCode = temp.pop();
     this.weekCode = temp.pop();
-    this.retrieveExercices(this.weekCode, this.trainCode);
-  }
-
-  private retrieveExercices(weekCode, trainCode) {
-    const temp = treinos[weekCode].days[trainCode];
-    temp.exercices = temp.exercices.map(exercices => {
-      const video = videos.find(v => v.title === exercices.title);
-      return {
-        ...exercices,
-        group: video.group,
-        video: video.video
-      };
-    });
-    this.exercices = temp;
   }
 
   public ngOnInit() {
-    const groups = {};
-    this.exercices.exercices.forEach(element => {
+    this.store.dispatch(new ListWorkouts('10'));
+    this.exercices$ = this.store.pipe(select(selectExerciceList));
+    this.exercices$.subscribe(data => data.forEach(element => {
+      const groups = {};
       if (element.group.title !== 'Técnica avançada') {
         groups[element.group.title] = '';
       }
-    });
-    this.subtitle = keys(groups).join(' + ');
+      this.subtitle = keys(groups).join(' + ');
+    }));
+    // const groups = {};
+    // this.exercices.exercices.forEach(element => {
+    //   if (element.group.title !== 'Técnica avançada') {
+    //     groups[element.group.title] = '';
+    //   }
+    // });
+    // this.subtitle = keys(groups).join(' + ');
   }
 
   public async slideChanged(data) {
@@ -62,7 +64,6 @@ export class TrainingPage implements OnInit {
   }
 
   async presentModal(dt) {
-    console.log('@@##', dt);
     const videoId = dt.exercice.video.split('=').pop();
     const modal = await this.modalController.create({
       component: WatchVideoModalComponent,

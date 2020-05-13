@@ -1,19 +1,19 @@
 
-  <ion-card>
-    <ion-card-header>{{subtitle}}</ion-card-header>
-    <ion-card-content>
-      <ion-list>
-        <ion-item *ngFor="let ex of exercices.exercices; let i = index;" (click)="videoSelect(i, ex)">
-          <ion-label>
-            <ion-card-subtitle><b>{{ex.title}} ({{ex.sets}})</b></ion-card-subtitle>
-            <ion-card-subtitle>
-              <span>Descanso: {{ex.interval}}</span>
-              <ion-chip *ngIf="ex.technique" color="danger">
-                <ion-label>{{ex.technique}}</ion-label>
-              </ion-chip>
-            </ion-card-subtitle>
-          </ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-card-content> 
-  </ion-card>
+<ion-card>
+  <ion-card-header>{{subtitle}}</ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-item *ngFor="let ex of exercices; let i = index;" (click)="videoSelect(i, ex)">
+        <ion-label>
+          <ion-card-subtitle><b>{{ex.title}} ({{ex.sets}})</b></ion-card-subtitle>
+          <ion-card-subtitle>
+            <span>Descanso: {{ex.interval}}</span>
+            <ion-chip *ngIf="ex.technique" color="danger">
+              <ion-label>{{ex.technique}}</ion-label>
+            </ion-chip>
+          </ion-card-subtitle>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>

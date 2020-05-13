@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { UtilsModule } from '@app/store/utils/utils.module';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
 import { WorkoutEffects } from './workout.effects';
 import { reducer } from './workout.reducer';
-import { WorkoutService } from './workout.service';
 import { key } from './workout.state';
 
 @NgModule({
@@ -15,7 +15,8 @@ import { key } from './workout.state';
     HttpClientModule,
     StoreModule.forFeature(key, reducer),
     EffectsModule.forFeature([WorkoutEffects]),
+    UtilsModule
   ],
-  providers: [WorkoutEffects, WorkoutService],
+  providers: [WorkoutEffects],
 })
 export class WorkoutStoreModule {}
