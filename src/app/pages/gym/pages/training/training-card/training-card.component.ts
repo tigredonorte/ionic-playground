@@ -25,7 +25,7 @@ export class TrainingCardComponent {
     const index = await this.slides.getActiveIndex();
     this.videoSelected.emit({
       index,
-      exercice: this.exercices.exercices[index]
+      exercice: this.exercices[index]
     });
   }
 }

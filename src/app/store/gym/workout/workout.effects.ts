@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
+import { ApiService } from '@app/store/utils/api.service';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { map, mergeMap } from 'rxjs/operators';
 
 import * as actions from './workout.action';
 import { Exercice } from './workout.state';
-import { ApiService } from '@app/store/utils/api.service';
 
 @Injectable()
 export class WorkoutEffects {

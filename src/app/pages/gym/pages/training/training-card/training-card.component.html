@@ -1,17 +1,19 @@
 <ion-slides #slides pager="true" [options]="slideOpts" (ionSlidesDidLoad)="slideChanged()" (ionSlideDidChange)="slideChanged()">
-  <ion-slide *ngFor="let ex of exercices; let i=index;" >
-    <ion-card class='width100 animate__animated animate__fadeIn'>
-      <ion-card-header>{{subtitle}}</ion-card-header>
-      <div [id]="'youtube_' + i">youtube link</div>
-      <ion-card-content>
-        <ion-card-title>{{ex.title}} ({{ex.sets}})</ion-card-title>
-        <ion-card-subtitle>
-          <span>Descanso: {{ex.interval}}</span>
-          <ion-chip *ngIf="ex.technique" color="danger">
-            <ion-label>{{ex.technique}}</ion-label>
-          </ion-chip>
-        </ion-card-subtitle>
-      </ion-card-content>
-    </ion-card>
-  </ion-slide>
+  <ng-container *ngIf="exercices.length">
+    <ion-slide *ngFor="let ex of exercices; let i=index;">
+      <ion-card class='width100 animate__animated animate__fadeIn'>
+        <ion-card-header>{{subtitle}}</ion-card-header>
+        <div [id]="'youtube_' + i">youtube link</div>
+        <ion-card-content>
+          <ion-card-title>{{ex.title}} ({{ex.sets}})</ion-card-title>
+          <ion-card-subtitle>
+            <span>Descanso: {{ex.interval}}</span>
+            <ion-chip *ngIf="ex.technique" color="danger">
+              <ion-label>{{ex.technique}}</ion-label>
+            </ion-chip>
+          </ion-card-subtitle>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ng-container>
 </ion-slides>

@@ -48,13 +48,6 @@ export class TrainingPage implements OnInit {
       }
       this.subtitle = keys(groups).join(' + ');
     }));
-    // const groups = {};
-    // this.exercices.exercices.forEach(element => {
-    //   if (element.group.title !== 'Técnica avançada') {
-    //     groups[element.group.title] = '';
-    //   }
-    // });
-    // this.subtitle = keys(groups).join(' + ');
   }
 
   public async slideChanged(data) {

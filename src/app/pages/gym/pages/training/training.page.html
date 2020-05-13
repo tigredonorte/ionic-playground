@@ -10,17 +10,19 @@
     </ion-segment>
   </ion-toolbar>
 
-  <app-training-card *ngIf="mode==='card'"
-    [subtitle]="subtitle"
-    [exercices]="exercices$ | async"
-    [currentExercice]="currentExercice"
-    (videoSelected)="slideChanged($event)"
-  ></app-training-card>
-  <app-training-list
-    *ngIf="mode==='list'"
-    [subtitle]="subtitle"
-    [exercices]="exercices$ | async"
-    (videoSelected)="presentModal($event)"
-  ></app-training-list>
+  <ng-container *ngIf="(exercices$ | async).length">
+    <app-training-card *ngIf="mode==='card'"
+      [subtitle]="subtitle"
+      [exercices]="exercices$ | async"
+      [currentExercice]="currentExercice"
+      (videoSelected)="slideChanged($event)"
+    ></app-training-card>
+    <app-training-list
+      *ngIf="mode==='list'"
+      [subtitle]="subtitle"
+      [exercices]="exercices$ | async"
+      (videoSelected)="presentModal($event)"
+    ></app-training-list>
+  </ng-container>
 
 </ion-content>
