@@ -6,5 +6,5 @@ import { key, VideoState } from './video.state';
 const selectVideoState = state => path([key], state);
 export const selectVideoList = createSelector(
   selectVideoState,
-  (state: VideoState): any => (path(['videos'], state))
+  (state: VideoState): any => state.videos
 );

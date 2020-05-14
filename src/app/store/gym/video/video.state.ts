@@ -10,9 +10,9 @@ export interface Video {
 }
 
 export interface VideoState {
-  exercices: Video[];
+  videos: Video[];
 }
 
 export const videoInitialState: VideoState = {
-  exercices: []
+  videos: []
 };

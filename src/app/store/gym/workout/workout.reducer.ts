@@ -5,7 +5,7 @@ export function reducer(state = workoutInitialState, action: Actions.WorkoutActi
   try {
     switch (action.type) {
       case Actions.actions.listedWorkouts: {
-        return { ...state, exercices: action.exercices };
+        return { ...state, workouts: action.workouts };
       }
 
       default:

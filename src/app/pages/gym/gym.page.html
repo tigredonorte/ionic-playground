@@ -3,7 +3,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let treino of treinos; let i=index" (click)='selectTreino(i)'>
+  <ion-card *ngFor="let treino of (treinos$ | async); let i=index" (click)='selectTreino(treino.gymRecordId)'>
     <ion-card-header>{{treino.subtitle}}</ion-card-header>
     <ion-card-content>
       <ion-card-title>{{treino.title}}</ion-card-title>

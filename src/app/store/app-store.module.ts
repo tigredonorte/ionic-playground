@@ -5,7 +5,10 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 
-import { WorkoutStoreModule } from './gym/workout/workout-store.module';
+import { ExerciceStoreModule } from './gym/exercice/exercice-store.module';
+import { GymRecordStoreModule } from './gym/gym-record';
+import { VideoStoreModule } from './gym/video';
+import { WorkoutStoreModule } from './gym/workout';
 import { clearState } from './login/logout/logout.state';
 
 @NgModule({
@@ -19,7 +22,10 @@ import { clearState } from './login/logout/logout.state';
         strictActionImmutability: true
       }
     }),
+    ExerciceStoreModule,
     WorkoutStoreModule,
+    VideoStoreModule,
+    GymRecordStoreModule,
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ]
 })

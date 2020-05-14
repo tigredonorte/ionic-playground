@@ -5,7 +5,7 @@ export function reducer(state = videoInitialState, action: Actions.VideoActions)
   try {
     switch (action.type) {
       case Actions.actions.listedVideos: {
-        return { ...state, exercices: action.videos };
+        return { ...state, videos: action.videos };
       }
 
       default:

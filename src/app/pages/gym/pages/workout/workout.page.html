@@ -5,17 +5,15 @@
 <ion-content>
   <ion-card>
     <ion-card-content>
-      <ion-card-title>{{week.title}}</ion-card-title>
-      <ion-card-subtitle>{{week.subtitle}}</ion-card-subtitle>
+      <ion-card-title>{{(gymRecord$ | async).title}}</ion-card-title>
+      <ion-card-subtitle>{{(gymRecord$ | async).subtitle}}</ion-card-subtitle>
       <ion-list>
-        <ion-item *ngFor="let ex of week.days; let i = index;" (click)="selectDay(i)">
+        <ion-item *ngFor="let ex of (workout$ | async); let i = index;" (click)="selectDay(i)">
           <ion-label>
             <h2>{{ex.title}}</h2>
-            <p>{{ex.sets}} <span *ngIf="ex.technique"> - {{ex.technique}}</span></p>
           </ion-label>
         </ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
-
 </ion-content>

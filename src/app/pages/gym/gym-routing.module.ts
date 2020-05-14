@@ -9,11 +9,11 @@ const routes: Routes = [
     component: GymPage
   },
   {
-    path: 'week/:weekName',
-    loadChildren: () => import('./pages/week/week.module').then( m => m.WeekPageModule)
+    path: 'workout/:workoutCode',
+    loadChildren: () => import('./pages/workout/workout.module').then( m => m.WorkoutPageModule)
   },
   {
-    path: 'training/:weekName/:title',
+    path: 'training/:workoutCode/:title',
     loadChildren: () => import('./pages/training/training.module').then( m => m.TrainingPageModule)
   }
 ];

@@ -4,7 +4,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { map, mergeMap } from 'rxjs/operators';
 
 import * as actions from './workout.action';
-import { Exercice } from './workout.state';
+import { Workout } from './workout.state';
 
 @Injectable()
 export class WorkoutEffects {
@@ -12,7 +12,7 @@ export class WorkoutEffects {
   @Effect() public listWorkouts = this.actions$.pipe(
     ofType(actions.actions.listWorkouts),
     mergeMap((action: actions.ListWorkouts) => this.apiService.get(`workout/${action.userId}`)),
-    map((exercices: Exercice[]) => new actions.ListWorkoutsEnd(exercices))
+    map((workouts: Workout[]) => new actions.ListWorkoutsEnd(workouts))
   );
 
   constructor(

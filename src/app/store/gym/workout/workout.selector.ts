@@ -4,7 +4,12 @@ import { path } from 'ramda';
 import { key, WorkoutState } from './workout.state';
 
 const selectWorkoutState = state => path([key], state);
-export const selectExerciceList = createSelector(
+export const selectWorkoutList = createSelector(
   selectWorkoutState,
-  (state: WorkoutState): any => (path(['exercices'], state))
+  (state: WorkoutState): any => state.workouts
+);
+
+export const selectWorkoutItem = (gymRecordId: string) => createSelector(
+  selectWorkoutState,
+  (state: WorkoutState): any => state.workouts.filter(it => it.gymRecordId === gymRecordId)
 );

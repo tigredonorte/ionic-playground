@@ -1,25 +1,16 @@
 export const key = 'workouts';
 
-export interface ExerciceFromService {
+export interface Workout {
   title: string;
-  sets: string;
-  technique: string;
-  interval: string;
-}
-
-export interface Exercice {
-  title: string;
-  sets: string;
-  technique: string;
-  interval: string;
-  group: any;
-  video: any;
+  subtitle: string;
+  userId: string;
+  gymRecordId: string;
 }
 
 export interface WorkoutState {
-  exercices: Exercice[];
+  workouts: Workout[];
 }
 
 export const workoutInitialState: WorkoutState = {
-  exercices: []
+  workouts: []
 };

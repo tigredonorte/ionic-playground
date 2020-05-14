@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ListWorkouts } from '@app/store/gym/workout/workout.action';
-import { selectExerciceList } from '@app/store/gym/workout/workout.selector';
-import { Exercice } from '@app/store/gym/workout/workout.state';
+import { ListExercices } from '@app/store/gym/exercice/exercice.action';
+import { selectExerciceList } from '@app/store/gym/exercice/exercice.selector';
+import { Exercice } from '@app/store/gym/exercice/exercice.state';
 import { ModalController } from '@ionic/angular';
 import { select, Store } from '@ngrx/store';
 import { keys } from 'ramda';
 import { Observable } from 'rxjs';
 
-import { treinos } from '../../treinos';
-import { videos } from '../../videos';
 import { WatchYoutubeService } from './service/watch-youtube.service';
 import { WatchVideoModalComponent } from './watch-video-modal/watch-video-modal.component';
 
@@ -23,9 +21,9 @@ export class TrainingPage implements OnInit {
   public currentExercice = 0;
   public mode = 'card'; // list, card
   public exercices$: Observable<Exercice[]>;
-  public exercices;
   public weekCode;
   public trainCode;
+  public title = '';
   public subtitle = '';
   constructor(
     private router: Router,
@@ -39,7 +37,7 @@ export class TrainingPage implements OnInit {
   }
 
   public ngOnInit() {
-    this.store.dispatch(new ListWorkouts('10'));
+    this.store.dispatch(new ListExercices(this.trainCode));
     this.exercices$ = this.store.pipe(select(selectExerciceList));
     this.exercices$.subscribe(data => data.forEach(element => {
       const groups = {};
