@@ -5,9 +5,13 @@ export enum actions {
   listedExercices = '[Exercice] listed exercices',
 }
 
+export interface ListExercicesOptions {
+  workoutId?: string;
+}
+
 export class ListExercices {
   public readonly type = actions.listExercices;
-  constructor(public userId: string) {}
+  constructor(public userId: string, public options?: ListExercicesOptions) {}
 }
 
 export class ListExercicesEnd {

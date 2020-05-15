@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
 import { take } from 'rxjs/operators';
+import { forEachObjIndexed } from 'ramda';
 
 @Injectable()
 export class ApiService {
@@ -31,6 +32,12 @@ export class ApiService {
   public delete(url: string, header?: any): any {
     const headers = this.parseIHeader(header);
     return this.httpClient.delete(this.getUrl(url), { headers});
+  }
+
+  public mountUrl(url: string, options: {[s: string]: any}) {
+    const _url = [];
+    forEachObjIndexed((value, key) => _url.push(`${key}=${value}`), options);
+    return url + (_url.length === 0 ? '' : `?${_url.join('&')}`);
   }
 
   private getUrl(url: string) {

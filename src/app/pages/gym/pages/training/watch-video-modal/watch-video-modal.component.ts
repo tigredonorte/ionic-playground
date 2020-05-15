@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
-import { ModalController } from '@ionic/angular';
+import { ModalController, Platform } from '@ionic/angular';
+
 import { WatchYoutubeService } from '../service/watch-youtube.service';
 
 @Component({
@@ -15,12 +16,15 @@ export class WatchVideoModalComponent implements OnInit {
   constructor(
     private youtubeService: WatchYoutubeService,
     private modalCtrl: ModalController,
-    private screenOrientation: ScreenOrientation
+    private screenOrientation: ScreenOrientation,
+    private platform: Platform
   ) { }
 
   public ngOnInit() {
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
-    this.youtubeService.openVideo(`youtube`, this.videoId);
+    this.youtubeService.openVideo(`youtube`, this.videoId, {
+      playerSize: { width: this.platform.width(), height: this.platform.height() }
+    });
   }
 
   public dismiss = () => {

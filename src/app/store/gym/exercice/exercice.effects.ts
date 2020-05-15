@@ -11,7 +11,9 @@ export class ExerciceEffects {
 
   @Effect() public listExercices = this.actions$.pipe(
     ofType(actions.actions.listExercices),
-    mergeMap((action: actions.ListExercices) => this.apiService.get(`exercice/${action.userId}`)),
+    mergeMap((action: actions.ListExercices) => {
+      return this.apiService.get(this.apiService.mountUrl(`exercice/${action.userId}`, action.options));
+    }),
     map((exercices: Exercice[]) => new actions.ListExercicesEnd(exercices))
   );
 

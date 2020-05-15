@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { ListExercices } from '@app/store/gym/exercice/exercice.action';
 import { selectExerciceList } from '@app/store/gym/exercice/exercice.selector';
 import { Exercice } from '@app/store/gym/exercice/exercice.state';
-import { ModalController } from '@ionic/angular';
+import { ModalController, Platform } from '@ionic/angular';
 import { select, Store } from '@ngrx/store';
-import { keys } from 'ramda';
+import { uniq } from 'ramda';
 import { Observable } from 'rxjs';
 
 import { WatchYoutubeService } from './service/watch-youtube.service';
@@ -22,36 +22,35 @@ export class TrainingPage implements OnInit {
   public mode = 'card'; // list, card
   public exercices$: Observable<Exercice[]>;
   public weekCode;
-  public trainCode;
+  public workoutId;
   public title = '';
   public subtitle = '';
+  public userId = '1';
   constructor(
     private router: Router,
     private youtubeService: WatchYoutubeService,
     private modalController: ModalController,
+    private platform: Platform,
     private store: Store<any>
   ) {
     const temp = this.router.url.split('/');
-    this.trainCode = temp.pop();
+    this.workoutId = temp.pop();
     this.weekCode = temp.pop();
   }
 
   public ngOnInit() {
-    this.store.dispatch(new ListExercices(this.trainCode));
+    this.store.dispatch(new ListExercices(this.userId, {workoutId: this.workoutId}));
     this.exercices$ = this.store.pipe(select(selectExerciceList));
-    this.exercices$.subscribe(data => data.forEach(element => {
-      const groups = {};
-      if (element.group.title !== 'Técnica avançada') {
-        groups[element.group.title] = '';
-      }
-      this.subtitle = keys(groups).join(' + ');
-    }));
+    this.exercices$.subscribe(data => this.subtitle = uniq(data.map((v) => v.group.title)).join(' - '));
   }
 
   public async slideChanged(data) {
     this.currentExercice = data.index;
     const videoId = data.exercice.video.split('=').pop();
-    this.youtubeService.openVideo(`youtube_${data.index}`, videoId);
+    const width = this.platform.width() - 10;
+    this.youtubeService.openVideo(`youtube_${data.index}`, videoId, {
+      playerSize: { width, height: (360 / 640) * width }
+    });
   }
 
   async presentModal(dt) {

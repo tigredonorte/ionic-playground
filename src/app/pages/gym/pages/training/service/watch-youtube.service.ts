@@ -5,16 +5,17 @@ import { YoutubePlayerWeb } from 'capacitor-youtube-player';
 @Injectable()
 export class WatchYoutubeService {
 
-  public openVideo = (id, videoId) => Capacitor.platform === 'web'
-      ? this.initializeYoutubePlayerPluginWeb(id, videoId)
-      : this.initializeYoutubePlayerPluginNative(videoId)
+  public openVideo = (id, videoId, options?) => Capacitor.platform === 'web'
+      ? this.initializeYoutubePlayerPluginWeb(id, videoId, options)
+      : this.initializeYoutubePlayerPluginNative(videoId, options)
 
-  private async initializeYoutubePlayerPluginWeb(id, videoId) {
+  private async initializeYoutubePlayerPluginWeb(id, videoId, options) {
     console.log( `method called with playerId=${id}`);
-    const options = {
+    options = {
       playerId: id,
-      playerSize: { width: 640, height: 360 },
+      playerSize: { width: 420, height: 240 },
       videoId,
+      ...options
     };
     const result = await YoutubePlayerWeb.initialize(options);
     console.log('playerReady', result);
@@ -36,9 +37,9 @@ export class WatchYoutubeService {
     console.log('destroyYoutubePlayer', result);
   }
 
-  private async initializeYoutubePlayerPluginNative(videoId) {
+  private async initializeYoutubePlayerPluginNative(videoId, options) {
     const { YoutubePlayer } = Plugins;
-    const options = { width: 640, height: 360, videoId };
+    options = { width: 640, height: 360, videoId, ...options };
     const playerReady = await YoutubePlayer.initialize(options);
   }
 }
