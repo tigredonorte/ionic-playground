@@ -7,8 +7,8 @@
         <ion-card-content>
           <ion-card-title>{{current.title}} - {{(current.sets.length)}}x{{(current.sets[0])}}</ion-card-title>
           <ng-container *ngIf="current.setExecution.length">
-            <app-set-editor *ngIf="!loading" class="animate__animated animate__fadeInLeft" [i]="currentSetIndex" [set]="currentSet" [total]="current.setExecution.length" (next)="nextIndex($event)"></app-set-editor>
-            <app-set-editor *ngIf="loading" class="animate__animated animate__fadeInLeft" [i]="currentSetIndex" [set]="currentSet" [total]="current.setExecution.length" (next)="nextIndex($event)"></app-set-editor>
+            <app-set-editor *ngIf="!loading" [ngClass]="cssClass" [i]="currentSetIndex" [set]="currentSet" [total]="current.setExecution.length" (next)="nextIndex($event)"></app-set-editor>
+            <app-set-editor *ngIf="loading" [i]="currentSetIndex" [set]="currentSet" [total]="current.setExecution.length" (next)="nextIndex($event)"></app-set-editor>
           </ng-container>
           <ion-card-subtitle>
             <span>Descanso: {{current.interval}}</span>

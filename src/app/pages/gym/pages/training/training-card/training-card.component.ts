@@ -17,6 +17,7 @@ export class TrainingCardComponent {
   public currentSet: {series: number, weight: number};
   public current;
   public slideOpts = {};
+  public cssClass = 'animate__animated animate__fadeInRight';
   @Input() public set currentExercice(currentIndex: number) {
     this.currentIndex = currentIndex;
     this.slideOpts = {
@@ -61,9 +62,14 @@ export class TrainingCardComponent {
     if (index < 0 || index > this.current.setExecution.length - 1) {
       return;
     }
-    this.loading = true;
-    timer(1).subscribe(() => this.loading = false);
+    let cssClass = 'animate__animated animate__fadeInRight';
+    if (index < this.currentSetIndex) {
+      cssClass = 'animate__animated animate__fadeInLeft';
+    }
+    this.cssClass = cssClass;
     this.currentSetIndex = index;
     this.currentSet = this.current.setExecution[this.currentSetIndex];
+    this.loading = true;
+    timer(1).subscribe(() => this.loading = false);
   }
 }
