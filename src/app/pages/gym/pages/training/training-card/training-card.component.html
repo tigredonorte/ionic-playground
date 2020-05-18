@@ -1,19 +1,34 @@
-<ion-slides #slides pager="true" [options]="slideOpts" (ionSlidesDidLoad)="slideChanged()" (ionSlideDidChange)="slideChanged()">
-  <ng-container *ngIf="exercices.length">
-    <ion-slide *ngFor="let ex of exercices; let i=index;">
-      <ion-card class='width100 animate__animated animate__fadeIn'>
-        <ion-card-header>{{subtitle}}</ion-card-header>
-        <div [id]="'youtube_' + i">youtube link</div>
-        <ion-card-content>
-          <ion-card-title>{{ex.title}} ({{ex.sets}})</ion-card-title>
-          <ion-card-subtitle>
-            <span>Descanso: {{ex.interval}}</span>
-            <ion-chip *ngIf="ex.technique" color="danger">
-              <ion-label>{{ex.technique}}</ion-label>
-            </ion-chip>
-          </ion-card-subtitle>
-        </ion-card-content>
-      </ion-card>
+<!-- <ion-slides #slides pager="true" [options]="slideOpts" (ionSlidesDidLoad)="slideChanged()" (ionSlideDidChange)="slideChanged()">
+  <ng-container *ngIf="_exercices.length">
+    <ion-slide *ngFor="let ex of _exercices; let i=index;">
+      <ng-container *ngTemplateOutlet="cardTemplate; context: {ex: ex, i: i}"></ng-container>
     </ion-slide>
   </ng-container>
-</ion-slides>
+</ion-slides> -->
+
+<ng-container *ngTemplateOutlet="cardTemplate; context: {ex: current, i: index}"></ng-container>
+
+
+<ng-template #cardTemplate let-ex="ex" let-i="i">
+  <ion-card class='animate__animated animate__fadeIn'>
+    <ion-card-header>{{subtitle}}</ion-card-header>
+    <div [id]="'youtube_' + i">youtube link</div>
+    <ion-card-content>
+      <ion-card-title>{{ex.title}} - {{(ex.sets.length)}}x{{(ex.sets[0])}}</ion-card-title>
+      <ion-grid>
+        <ion-row>
+          <ion-col *ngFor="let set of ex.sets; let j of index;">
+            <ion-card-title style="font-size: 16px;">{{set}}<span style="font-size: 12px;">X</span></ion-card-title>
+            <ion-card-subtitle style="font-size: 14px;">10Kg</ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-card-subtitle>
+        <span>Descanso: {{ex.interval}}</span>
+        <ion-chip *ngIf="ex.technique" color="danger" (click)="techniqueSelected.emit({video: ex.techniqueVideo})">
+          <ion-label>{{ex.technique}}</ion-label>
+        </ion-chip>
+      </ion-card-subtitle>
+    </ion-card-content>
+  </ion-card>
+</ng-template>

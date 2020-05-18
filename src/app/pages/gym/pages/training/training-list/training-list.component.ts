@@ -9,7 +9,8 @@ export class TrainingListComponent {
 
   @Input() public subtitle = '';
   @Input() public exercices;
-  @Output() public videoSelected = new EventEmitter<{index: any, exercice: any}>();
+  @Output() public videoSelected = new EventEmitter<{index: any, video: any}>();
+  @Output() public techniqueSelected = new EventEmitter<{index: any, video: any}>();
 
-  public videoSelect = (index, exercice) => this.videoSelected.emit({index, exercice});
+  public videoSelect = (index, exercice) => this.videoSelected.emit({index, video: exercice.video});
 }

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ListGymRecords, selectGymRecordList } from '@app/store/gym/gym-record';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { ListWorkouts } from '@app/store/gym/workout';
+import { ListWorkouts, selectWorkoutList } from '@app/store/gym/workout';
 
 @Component({
   selector: 'app-gym',
@@ -13,6 +13,7 @@ import { ListWorkouts } from '@app/store/gym/workout';
 export class GymPage implements OnInit {
   userId = '1';
   public treinos$: Observable<any> = this.store.pipe(select(selectGymRecordList));
+  public workout$ = this.store.pipe(select(selectWorkoutList));
 
   constructor(
     private router: Router,

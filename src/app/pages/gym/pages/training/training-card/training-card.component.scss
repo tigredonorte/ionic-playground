@@ -1,0 +1,27 @@
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.sc-ion-input-md-h {
+  --padding-start: 0px;
+}
+
+.weight {
+  text-align: center;
+  width: 100%;
+}
+
+.list-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 0;
+  flex-wrap: wrap;
+  overflow-x: scroll;
+  .list-container-item {
+    width: 60px;
+  }
+}

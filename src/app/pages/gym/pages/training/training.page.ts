@@ -45,16 +45,21 @@ export class TrainingPage implements OnInit {
   }
 
   public async slideChanged(data) {
+    console.log('@@##', data);
     this.currentExercice = data.index;
-    const videoId = data.exercice.video.split('=').pop();
+    const videoId = this.getVideoId(data.video);
     const width = this.platform.width() - 10;
     this.youtubeService.openVideo(`youtube_${data.index}`, videoId, {
       playerSize: { width, height: (360 / 640) * width }
     });
   }
 
-  async presentModal(dt) {
-    const videoId = dt.exercice.video.split('=').pop();
+  public log(dt) {
+    console.log({dt});
+  }
+
+  public async presentModal(dt) {
+    const videoId = this.getVideoId(dt.video);
     const modal = await this.modalController.create({
       component: WatchVideoModalComponent,
       componentProps: {videoId}
@@ -64,5 +69,7 @@ export class TrainingPage implements OnInit {
     const { data } = await modal.onWillDismiss();
     console.log(data);
   }
+
+  private getVideoId = (video) => video.indexOf('=') !== -1 ? video.split('=').pop() : video.split('/').pop();
 
 }

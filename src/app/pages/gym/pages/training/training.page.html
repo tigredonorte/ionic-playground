@@ -16,12 +16,15 @@
       [exercices]="exercices$ | async"
       [currentExercice]="currentExercice"
       (videoSelected)="slideChanged($event)"
+      (techniqueSelected)="presentModal($event)"
+      (setClicked)="log($event)"
     ></app-training-card>
     <app-training-list
       *ngIf="mode==='list'"
       [subtitle]="subtitle"
       [exercices]="exercices$ | async"
       (videoSelected)="presentModal($event)"
+      (techniqueSelected)="presentModal($event)"
     ></app-training-list>
   </ng-container>
 

@@ -3,12 +3,12 @@
   <ion-card-header>{{subtitle}}</ion-card-header>
   <ion-card-content>
     <ion-list>
-      <ion-item *ngFor="let ex of exercices; let i = index;" (click)="videoSelect(i, ex)">
+      <ion-item *ngFor="let ex of exercices; let i = index;" >
         <ion-label>
-          <ion-card-subtitle><b>{{ex.title}} ({{ex.sets}})</b></ion-card-subtitle>
+          <ion-card-subtitle (click)="videoSelect(i, ex)"><b>{{ex.title}} ({{ex.sets.length}}x{{ex.sets[0]}})</b></ion-card-subtitle>
           <ion-card-subtitle>
-            <span>Descanso: {{ex.interval}}</span>
-            <ion-chip *ngIf="ex.technique" color="danger">
+            <span (click)="videoSelect(i, ex)">Descanso: {{ex.interval}}</span>
+            <ion-chip *ngIf="ex.technique" color="danger" (click)="techniqueSelected.emit({video: ex.techniqueVideo})">
               <ion-label>{{ex.technique}}</ion-label>
             </ion-chip>
           </ion-card-subtitle>
