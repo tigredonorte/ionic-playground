@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-training-card',
@@ -9,6 +10,8 @@ import { IonSlides } from '@ionic/angular';
 export class TrainingCardComponent {
 
   @ViewChild('slides', { static: false }) slides: IonSlides;
+
+  public loading = false;
   public currentIndex = 0;
   public currentSetIndex = 0;
   public currentSet: {series: number, weight: number};
@@ -55,9 +58,11 @@ export class TrainingCardComponent {
   }
 
   public nextIndex = (index) => {
-    if (index < 0 || index > this.current.setExecution.length) {
+    if (index < 0 || index > this.current.setExecution.length - 1) {
       return;
     }
+    this.loading = true;
+    timer(1).subscribe(() => this.loading = false);
     this.currentSetIndex = index;
     this.currentSet = this.current.setExecution[this.currentSetIndex];
   }
