@@ -45,7 +45,6 @@ export class TrainingPage implements OnInit {
   }
 
   public async slideChanged(data) {
-    console.log('@@##', data);
     this.currentExercice = data.index;
     const videoId = this.getVideoId(data.video);
     const width = this.platform.width() - 10;

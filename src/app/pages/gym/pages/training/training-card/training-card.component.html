@@ -1,51 +1,22 @@
-<!-- <ion-slides #slides pager="true" [options]="slideOpts" (ionSlidesDidLoad)="slideChanged()" (ionSlideDidChange)="slideChanged()">
+<ion-slides #slides pager="true" [options]="slideOpts" (ionSlidesDidLoad)="slideChanged()" (ionSlideDidChange)="slideChanged()">
   <ng-container *ngIf="_exercices.length">
     <ion-slide *ngFor="let ex of _exercices; let i=index;">
-      <ng-container *ngTemplateOutlet="cardTemplate; context: {ex: ex, i: i}"></ng-container>
+      <ion-card class='animate__animated animate__fadeIn' *ngIf='!!current'>
+        <ion-card-header>{{subtitle}}</ion-card-header>
+        <div [id]="'youtube_' + currentIndex">youtube link</div>
+        <ion-card-content>
+          <ion-card-title>{{current.title}} - {{(current.sets.length)}}x{{(current.sets[0])}}</ion-card-title>
+          <ng-container *ngIf="current.setExecution.length">
+            <app-set-editor [i]="currentSetIndex" [set]="currentSet" [total]="current.setExecution.length" (next)="nextIndex($event)"></app-set-editor>
+          </ng-container>
+          <ion-card-subtitle>
+            <span>Descanso: {{current.interval}}</span>
+            <ion-chip *ngIf="current.technique" color="danger" (click)="techniqueSelected.emit({video: current.techniqueVideo})">
+              <ion-label>{{current.technique}}</ion-label>
+            </ion-chip>
+          </ion-card-subtitle>
+        </ion-card-content>
+      </ion-card>
     </ion-slide>
   </ng-container>
-</ion-slides> -->
-
-
-<ion-card class='animate__animated animate__fadeIn' *ngIf='!!current'>
-  <ion-card-header>{{subtitle}}</ion-card-header>
-  <div [id]="'youtube_' + currentIndex">youtube link</div>
-  <ion-card-content>
-    <ion-card-title>{{current.title}} - {{(current.sets.length)}}x{{(current.sets[0])}}</ion-card-title>
-    <ng-container *ngIf="current.sets.length">
-      <ion-list *ngFor="let set of current.setExecution; let i = index;">
-        <ion-card-subtitle class='serie-number'>Série {{i + 1}} de {{current.setExecution.length}}</ion-card-subtitle>
-        <ion-grid>
-          <ion-row>
-            <ion-col size='1' class='ion-align-self-center'>
-              <ion-icon name="arrow-back-outline"></ion-icon>
-            </ion-col>
-            <ion-col size='5'>
-              <ion-card-subtitle>Repetições: </ion-card-subtitle>
-              <ion-input type='number' [value]='set.series' min="1" max="30"></ion-input>
-            </ion-col>
-            <ion-col size='5'>
-              <ion-card-subtitle>Peso: </ion-card-subtitle>
-              <ion-input type='number' [value]='set.weight' min="1"></ion-input>
-            </ion-col>
-            <ion-col size='1' class='ion-align-self-center'>
-              <ion-icon name="arrow-forward-outline"></ion-icon>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-list>
-    </ng-container>
-    <ion-card-subtitle>
-      <span>Descanso: {{current.interval}}</span>
-      <ion-chip *ngIf="current.technique" color="danger" (click)="techniqueSelected.emit({video: current.techniqueVideo})">
-        <ion-label>{{current.technique}}</ion-label>
-      </ion-chip>
-    </ion-card-subtitle>
-    <ion-button slot="start" [disabled]="currentIndex<=0" (click)="prev()">
-      <ion-icon name="arrow-back-outline"></ion-icon>
-    </ion-button>
-    <ion-button slot="end" style="float: right;" [disabled]="currentIndex>=_exercices.length" (click)="next()">
-      <ion-icon name="arrow-forward-outline"></ion-icon>
-    </ion-button>
-  </ion-card-content>
-</ion-card>
+</ion-slides>

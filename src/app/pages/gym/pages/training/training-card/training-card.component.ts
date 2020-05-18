@@ -9,8 +9,9 @@ import { IonSlides } from '@ionic/angular';
 export class TrainingCardComponent {
 
   @ViewChild('slides', { static: false }) slides: IonSlides;
-
   public currentIndex = 0;
+  public currentSetIndex = 0;
+  public currentSet: {series: number, weight: number};
   public current;
   public slideOpts = {};
   @Input() public set currentExercice(currentIndex: number) {
@@ -37,6 +38,8 @@ export class TrainingCardComponent {
     }
     if (!!this._exercices && !!this._exercices[this.currentIndex]) {
       this.current = this._exercices[this.currentIndex];
+      this.currentSetIndex = 0;
+      this.currentSet = this.current.setExecution[this.currentSetIndex];
       this.slideChanged();
     }
   }
@@ -49,5 +52,13 @@ export class TrainingCardComponent {
       index: this.currentIndex,
       video: this._exercices[this.currentIndex].video
     });
+  }
+
+  public nextIndex = (index) => {
+    if (index < 0 || index > this.current.setExecution.length) {
+      return;
+    }
+    this.currentSetIndex = index;
+    this.currentSet = this.current.setExecution[this.currentSetIndex];
   }
 }
