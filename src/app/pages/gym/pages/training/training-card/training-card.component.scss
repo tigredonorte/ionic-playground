@@ -25,3 +25,17 @@
     width: 60px;
   }
 }
+
+ion-list-header, ion-grid, ion-col {
+  padding: 0;
+}
+
+ion-card-subtitle, ion-input {
+  text-align: center;
+}
+
+.serie-number{
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
