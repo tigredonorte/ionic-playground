@@ -18,6 +18,7 @@ import { WatchVideoModalComponent } from './watch-video-modal/watch-video-modal.
 })
 export class TrainingPage implements OnInit {
 
+  public enableModeToggle = false;
   public currentExercice = 0;
   public mode = 'card'; // list, card
   public exercices$: Observable<Exercice[]>;

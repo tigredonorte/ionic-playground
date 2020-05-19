@@ -3,7 +3,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-toolbar>
+  <ion-toolbar *ngIf="enableModeToggle">
     <ion-segment [value]="mode">
       <ion-segment-button value="card" (click)="mode='card'"><ion-icon name="videocam-outline"></ion-icon></ion-segment-button>
       <ion-segment-button value="list" (click)="mode='list'"><ion-icon name="list-circle-outline"></ion-icon></ion-segment-button>
