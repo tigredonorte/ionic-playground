@@ -35,6 +35,7 @@ export class TrainingCardComponent {
 
   @Output() public videoSelected = new EventEmitter();
   @Output() public techniqueSelected = new EventEmitter();
+  @Output() public formChanged = new EventEmitter();
 
   public updateCurrent(currentIndex?: number) {
     if (!isNaN(currentIndex)) {
@@ -52,7 +53,7 @@ export class TrainingCardComponent {
   public prev = () => this.updateCurrent(this.currentIndex - 1);
 
   public async slideChanged() {
-    const index = await this.slides.getActiveIndex();
+    const index = !!this.slides ? await this.slides.getActiveIndex() : this.currentIndex;
     this.videoSelected.emit({
       index,
       video: this._exercices[index].video
@@ -72,5 +73,9 @@ export class TrainingCardComponent {
     this.currentSet = this.current.setExecution[this.currentSetIndex];
     this.loading = true;
     timer(1).subscribe(() => this.loading = false);
+  }
+
+  public formChanges(data) {
+    this.formChanged.emit({index: this.currentIndex, ...data});
   }
 }

@@ -18,6 +18,7 @@
       (videoSelected)="slideChanged($event)"
       (techniqueSelected)="presentModal($event)"
       (setClicked)="log($event)"
+      (formChanged)="formChanged($event)"
     ></app-training-card>
     <app-training-list
       *ngIf="mode==='list'"

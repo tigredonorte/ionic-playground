@@ -3,6 +3,8 @@ import { Exercice } from './exercice.state';
 export enum actions {
   listExercices = '[Exercice] list exercices',
   listedExercices = '[Exercice] listed exercices',
+  updateExerciceSet = '[Exercice] update exercice set',
+  updatedExercice = '[Exercice] update exercice set',
 }
 
 export interface ListExercicesOptions {
@@ -19,7 +21,21 @@ export class ListExercicesEnd {
   constructor(public exercices: Exercice[]) {}
 }
 
+export class UpdateExerciceSet {
+  public readonly type = actions.updateExerciceSet;
+  constructor(public exercices: Exercice) {
+    console.log('@@##', exercices);
+  }
+}
+
+export class UpdatedExercice {
+  public readonly type = actions.updateExerciceSet;
+  constructor(public exercices: Exercice) {}
+}
+
 export type ExerciceActions =
   | ListExercices
-  | ListExercicesEnd;
+  | ListExercicesEnd
+  | UpdatedExercice
+  | UpdateExerciceSet;
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ListExercices } from '@app/store/gym/exercice/exercice.action';
+import { ListExercices, UpdateExerciceSet } from '@app/store/gym/exercice/exercice.action';
 import { selectExerciceList } from '@app/store/gym/exercice/exercice.selector';
 import { Exercice } from '@app/store/gym/exercice/exercice.state';
 import { ModalController, Platform } from '@ionic/angular';
@@ -56,6 +56,10 @@ export class TrainingPage implements OnInit {
 
   public log(dt) {
     console.log({dt});
+  }
+
+  public formChanged(data) {
+    this.store.dispatch(new UpdateExerciceSet({workoutId: this.workoutId, ...data}));
   }
 
   public async presentModal(dt) {

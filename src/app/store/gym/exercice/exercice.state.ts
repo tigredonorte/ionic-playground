@@ -10,6 +10,7 @@ export interface ExerciceFromService {
 export interface Exercice {
   title: string;
   sets: string;
+  setExecution: any;
   technique: string;
   interval: string;
   group: any;

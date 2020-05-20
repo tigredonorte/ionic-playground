@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UtilsModule } from '@app/store/utils/utils.module';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { IonicModule } from '@ionic/angular';
@@ -18,6 +18,7 @@ import { WatchVideoModalComponent } from './watch-video-modal/watch-video-modal.
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     TrainingPageRoutingModule,
     UiModule,
