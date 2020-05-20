@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 import { timer } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { timer } from 'rxjs';
   templateUrl: './training-card.component.html',
   styleUrls: ['./training-card.component.scss'],
 })
-export class TrainingCardComponent {
+export class TrainingCardComponent implements OnInit {
 
   @ViewChild('slides', { static: false }) slides: IonSlides;
 
@@ -15,7 +15,6 @@ export class TrainingCardComponent {
   public currentIndex = 0;
   public currentSetIndex = 0;
   public currentSet: {series: number, weight: number};
-  public current;
   public slideOpts = {};
   public cssClass = 'animate__animated animate__fadeInRight';
   @Input() public set currentExercice(currentIndex: number) {
@@ -23,28 +22,31 @@ export class TrainingCardComponent {
     this.slideOpts = {
       initialSlide: currentIndex
     };
-    this.updateCurrent();
   }
   @Input() public subtitle = '';
 
   public _exercices = [];
   @Input() public set exercices(exercices) {
     this._exercices = exercices;
-    this.updateCurrent();
+    this.currentSet = this.getCurrentExercice().setExecution[this.currentSetIndex];
   }
 
   @Output() public videoSelected = new EventEmitter();
   @Output() public techniqueSelected = new EventEmitter();
   @Output() public formChanged = new EventEmitter();
 
+  public ngOnInit() {
+    this.updateCurrent(0);
+  }
+
   public updateCurrent(currentIndex?: number) {
     if (!isNaN(currentIndex)) {
       this.currentIndex = currentIndex;
     }
-    if (!!this._exercices && !!this._exercices[this.currentIndex]) {
-      this.current = this._exercices[this.currentIndex];
+    const currentExercice = this.getCurrentExercice();
+    if (!!this._exercices && !!currentExercice) {
       this.currentSetIndex = 0;
-      this.currentSet = this.current.setExecution[this.currentSetIndex];
+      this.currentSet = currentExercice.setExecution[this.currentSetIndex];
       this.slideChanged();
     }
   }
@@ -61,7 +63,8 @@ export class TrainingCardComponent {
   }
 
   public nextIndex = (index) => {
-    if (index < 0 || index > this.current.setExecution.length - 1) {
+    console.log('@@##', index);
+    if (index < 0 || index > this.getCurrentExercice().setExecution.length - 1) {
       return;
     }
     let cssClass = 'animate__animated animate__fadeInRight';
@@ -70,12 +73,15 @@ export class TrainingCardComponent {
     }
     this.cssClass = cssClass;
     this.currentSetIndex = index;
-    this.currentSet = this.current.setExecution[this.currentSetIndex];
+    this.currentSet = this.getCurrentExercice().setExecution[this.currentSetIndex];
     this.loading = true;
     timer(1).subscribe(() => this.loading = false);
   }
 
+  public trackByFn = (item) => item.id;
+  public getCurrentExercice = () => this._exercices[this.currentIndex] || {};
+
   public formChanges(data) {
-    this.formChanged.emit({index: this.currentIndex, ...data});
+    this.formChanged.emit({id: this.getCurrentExercice().id, ...data});
   }
 }

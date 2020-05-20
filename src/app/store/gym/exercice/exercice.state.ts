@@ -8,13 +8,15 @@ export interface ExerciceFromService {
 }
 
 export interface Exercice {
+  id: string;
   title: string;
   sets: string;
-  setExecution: any;
+  setExecution: {series: number, weight: number}[];
   technique: string;
   interval: string;
   group: any;
   video: any;
+  workoutId: string;
 }
 
 export interface ExerciceState {

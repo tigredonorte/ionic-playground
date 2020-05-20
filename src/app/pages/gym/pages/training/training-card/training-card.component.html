@@ -1,13 +1,13 @@
 <ion-slides #slides pager="true" [options]="slideOpts" (ionSlidesDidLoad)="slideChanged()" (ionSlideDidChange)="slideChanged()">
   <ng-container *ngIf="_exercices.length">
-    <ion-slide *ngFor="let ex of _exercices; let i=index;">
+    <ion-slide *ngFor="let ex of _exercices; let i=index; trackBy: trackByFn">
       <ng-container *ngTemplateOutlet="cardTemplate; context: {index:i, item: ex}"></ng-container>
     </ion-slide>
   </ng-container>
 </ion-slides>
 
 <ng-template #cardTemplate let-item="item" let-index="index">
-  <ion-card class='animate__animated animate__fadeIn' *ngIf='!!current'>
+  <ion-card class='animate__animated animate__fadeIn'>
     <ion-card-header>{{subtitle}}</ion-card-header>
     <div [id]="'youtube_' + index">youtube link</div>
     <ion-card-content>

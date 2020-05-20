@@ -4,7 +4,7 @@ export enum actions {
   listExercices = '[Exercice] list exercices',
   listedExercices = '[Exercice] listed exercices',
   updateExerciceSet = '[Exercice] update exercice set',
-  updatedExercice = '[Exercice] update exercice set',
+  updatedExercice = '[Exercice] update exercice',
 }
 
 export interface ListExercicesOptions {
@@ -23,14 +23,12 @@ export class ListExercicesEnd {
 
 export class UpdateExerciceSet {
   public readonly type = actions.updateExerciceSet;
-  constructor(public exercices: Exercice) {
-    console.log('@@##', exercices);
-  }
+  constructor(public setItem: {i: number, id: string, weight: number, series: number}) { }
 }
 
 export class UpdatedExercice {
-  public readonly type = actions.updateExerciceSet;
-  constructor(public exercices: Exercice) {}
+  public readonly type = actions.updatedExercice;
+  constructor(public exercice: Exercice) {}
 }
 
 export type ExerciceActions =

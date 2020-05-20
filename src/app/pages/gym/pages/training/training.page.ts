@@ -7,6 +7,7 @@ import { ModalController, Platform } from '@ionic/angular';
 import { select, Store } from '@ngrx/store';
 import { uniq } from 'ramda';
 import { Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 import { WatchYoutubeService } from './service/watch-youtube.service';
 import { WatchVideoModalComponent } from './watch-video-modal/watch-video-modal.component';
