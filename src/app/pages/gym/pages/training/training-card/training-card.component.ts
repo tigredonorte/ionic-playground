@@ -52,9 +52,10 @@ export class TrainingCardComponent {
   public prev = () => this.updateCurrent(this.currentIndex - 1);
 
   public async slideChanged() {
+    const index = await this.slides.getActiveIndex();
     this.videoSelected.emit({
-      index: this.currentIndex,
-      video: this._exercices[this.currentIndex].video
+      index,
+      video: this._exercices[index].video
     });
   }
 
