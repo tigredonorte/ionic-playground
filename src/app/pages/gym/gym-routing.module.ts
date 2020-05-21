@@ -9,10 +9,6 @@ const routes: Routes = [
     component: GymPage
   },
   {
-    path: 'workout/:workoutCode',
-    loadChildren: () => import('./pages/workout/workout.module').then( m => m.WorkoutPageModule)
-  },
-  {
     path: 'training/:workoutCode/:title',
     loadChildren: () => import('./pages/training/training.module').then( m => m.TrainingPageModule)
   }

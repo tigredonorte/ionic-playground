@@ -3,17 +3,25 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let treino of (treinos$ | async); let i=index" (click)='selectTreino(treino.gymRecordId)'>
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="pull ro refresh"
+      refreshingSpinner="circles"
+      refreshingText="loading..."
+    ></ion-refresher-content>
+  </ion-refresher>
+  <ion-card *ngFor="let treino of (gymRecord$ | async); let i=index">
     <ion-card-header>{{treino.subtitle}}</ion-card-header>
     <ion-card-content>
       <ion-card-title>{{treino.title}}</ion-card-title>
+      <ion-list>
+        <ion-item *ngFor="let ex of treino.workouts" (click)="selectDay(ex.gymRecordId, ex.workoutId)">
+          <ion-label>
+            <h2>{{ex.title}}</h2>
+          </ion-label>
+        </ion-item>
+      </ion-list>
     </ion-card-content>
   </ion-card>
-  <!-- {{ (workout$ | async | json)}} -->
-  <!-- <ion-card *ngFor="let workout of (workout$ | async); let i=index" (click)='selectWorkout(workout.workoutId)'>
-    <ion-card-header>{{workout.subtitle}}</ion-card-header>
-    <ion-card-content>
-      <ion-card-title>{{workout.title}}</ion-card-title>
-    </ion-card-content>
-  </ion-card> -->
 </ion-content>
