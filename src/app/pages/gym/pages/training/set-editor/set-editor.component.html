@@ -1,0 +1,19 @@
+<ion-card-subtitle class='serie-number'>Série {{i + 1}} de {{total}}</ion-card-subtitle>
+<ion-grid [formGroup]="form">
+  <ion-row>
+    <ion-col size='1' class='ion-align-self-center' (click)="next.emit(i - 1)">
+      <ion-icon name="arrow-back-outline" *ngIf="i>0"></ion-icon>
+    </ion-col>
+    <ion-col size='5'>
+      <ion-card-subtitle>Repetições: </ion-card-subtitle>
+      <ion-input type='number' formControlName='series'></ion-input>
+    </ion-col>
+    <ion-col size='5'>
+      <ion-card-subtitle>Peso: </ion-card-subtitle>
+      <ion-input type='number' formControlName='weight'></ion-input>
+    </ion-col>
+    <ion-col size='1' class='ion-align-self-center' (click)="next.emit(i + 1)">
+      <ion-icon name="arrow-forward-outline" *ngIf="i<total-1"></ion-icon>
+    </ion-col>
+  </ion-row>
+</ion-grid>

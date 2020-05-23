@@ -1,0 +1,44 @@
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.sc-ion-input-md-h {
+  --padding-start: 0px;
+}
+
+.weight {
+  text-align: center;
+  width: 100%;
+}
+
+.list-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 0;
+  flex-wrap: wrap;
+  overflow-x: scroll;
+  .list-container-item {
+    width: 60px;
+  }
+}
+
+ion-card {
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+}
+
+ion-list-header, ion-grid, ion-col {
+  padding: 0;
+}
+
+ion-card-subtitle, ion-input {
+  text-align: center;
+}
+
+ion-card-title {
+  margin-bottom: 16px;
+}

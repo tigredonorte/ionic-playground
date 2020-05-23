@@ -1,0 +1,37 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+
+<ion-content>
+  <ion-reorder-group disabled="false" (ionItemReorder)="doReorder($event)">
+    <ion-item *ngFor="let item of items">
+      <ion-label>
+        {{item.label}}
+      </ion-label>
+      <ion-reorder slot='end'></ion-reorder>
+    </ion-item>
+  </ion-reorder-group>
+
+  <hr>
+  <ion-reorder-group disabled="false" (ionItemReorder)="doReorder($event)">
+    <ion-item *ngFor="let item of items">
+      <ion-label>
+        {{item.label}}
+      </ion-label>
+      <ion-reorder slot='start'></ion-reorder>
+    </ion-item>
+  </ion-reorder-group>
+
+  <hr>
+  
+  <ion-reorder-group disabled="false" (ionItemReorder)="doReorder($event)">
+    <ion-item *ngFor="let item of items">
+      <ion-label>
+        {{item.label}}
+      </ion-label>
+      <ion-reorder slot='end'>
+        <ion-icon name='pizza'></ion-icon>
+      </ion-reorder>
+    </ion-item>
+  </ion-reorder-group>
+</ion-content>

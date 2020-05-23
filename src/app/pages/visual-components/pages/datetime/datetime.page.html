@@ -1,0 +1,26 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Data: </ion-label>
+    <ion-datetime></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Display format: </ion-label>
+    <ion-datetime value='2019-01-01' display-format="DD/MM/YYYY"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Display format2: </ion-label>
+    <ion-datetime value='2019-01-01' display-format="DD/MMMM/YYYY"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Picker format: </ion-label>
+    <ion-datetime value='2019-01-01' display-format="DD/MM/YYYY" picker-format="MMM/YYYY"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Range: </ion-label>
+    <ion-datetime value='2019-01-01' display-format="DD/MM/YYYY" min='2018' max='2020-04-10'></ion-datetime>
+  </ion-item>
+</ion-content>

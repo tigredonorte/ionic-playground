@@ -1,0 +1,20 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar>
+    <ion-searchbar value='a' [(ngModel)]="search" color='dark' (ngModelChange)="doFilter($event)" cancelButtonText="fechar"></ion-searchbar>
+    <ion-searchbar showCancelButton="focus" cancelButtonText="fechar"></ion-searchbar>
+    <ion-searchbar animate placeholder="Animated"></ion-searchbar>
+    <ion-searchbar mode='ios' placeholder="IOS design"></ion-searchbar>
+    <ion-searchbar mode='md' placeholder="Material design"></ion-searchbar>
+  </ion-toolbar>
+  
+  <ion-list *ngIf="!!filtered.length">
+    <ion-list-header>Selected Items</ion-list-header>
+    <ion-item  color='white' *ngFor="let item of filtered">
+      <ion-label>{{item.label}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

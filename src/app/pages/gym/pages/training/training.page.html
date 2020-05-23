@@ -1,0 +1,32 @@
+<ion-header>
+  <app-header [title]="title" [backButton]="true"></app-header>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar *ngIf="enableModeToggle">
+    <ion-segment [value]="mode">
+      <ion-segment-button value="card" (click)="mode='card'"><ion-icon name="videocam-outline"></ion-icon></ion-segment-button>
+      <ion-segment-button value="list" (click)="mode='list'"><ion-icon name="list-circle-outline"></ion-icon></ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <ng-container *ngIf="(exercices$ | async).length">
+    <app-training-card *ngIf="mode==='card'"
+      [subtitle]="subtitle"
+      [exercices]="exercices$ | async"
+      [currentExercice]="currentExercice"
+      (videoSelected)="slideChanged($event)"
+      (techniqueSelected)="presentModal($event)"
+      (setClicked)="log($event)"
+      (formChanged)="formChanged($event)"
+    ></app-training-card>
+    <app-training-list
+      *ngIf="mode==='list'"
+      [subtitle]="subtitle"
+      [exercices]="exercices$ | async"
+      (videoSelected)="presentModal($event)"
+      (techniqueSelected)="presentModal($event)"
+    ></app-training-list>
+  </ng-container>
+
+</ion-content>

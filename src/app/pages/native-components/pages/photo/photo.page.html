@@ -1,0 +1,13 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+
+<ion-content>
+  <ion-button expand="block" (click)="takePicture($event)">Take picture</ion-button>
+  <ion-card *ngIf="img">
+    <ion-card-title>My picture</ion-card-title>
+    <ion-card-content>
+      <ion-img [src]="img"></ion-img>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
